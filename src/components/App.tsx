@@ -17,10 +17,26 @@ const App: React.FC = () => {
 
       if (response.data) {
         setData(response.data)
+      }
+    }
+    getData()
+  }, [])
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await coingecko.get("", {
+        params: {
+          order: "market_cap_desc",
+          price_change_percentage: "24h,7d",
+        },
+      })
+
+      if (response.data) {
+        setData(response.data)
         console.log(response.data)
       }
     }
-    setInterval(getData, 5000)
+    setInterval(getData, 30000)
   }, [])
 
   return (
