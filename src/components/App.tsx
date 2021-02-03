@@ -6,6 +6,7 @@ import Header from "./header"
 const App: React.FC = () => {
   const [data, setData] = useState([])
 
+  //first api call to get data
   useEffect(() => {
     const getData = async () => {
       const response = await coingecko.get("", {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     getData()
   }, [])
 
+  //calls api every 60 secs to refresh data
   useEffect(() => {
     const getData = async () => {
       const response = await coingecko.get("", {
@@ -33,10 +35,9 @@ const App: React.FC = () => {
 
       if (response.data) {
         setData(response.data)
-        console.log(response.data)
       }
     }
-    setInterval(getData, 30000)
+    setInterval(getData, 60000)
   }, [])
 
   return (
