@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import coingecko from "../apis/coingecko"
 import Table from "./table"
-import { AxiosResponse } from "axios"
+import Header from "./header"
 
 const App: React.FC = () => {
   const [data, setData] = useState([])
@@ -41,6 +41,7 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <Table data={data} />
     </div>
   )
